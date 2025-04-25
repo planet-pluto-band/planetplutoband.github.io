@@ -1,0 +1,74 @@
+<div>
+  <form method="POST" id="form" class="flex flex-col space-y-4">
+    <input
+      type="hidden"
+      name="access_key"
+      value="6b663246-16f1-49f0-ae18-40b02824bc61"
+    />
+    <input
+      type="text"
+      class="input input-primary w-full"
+      placeholder="Name *"
+      name="name"
+      required
+    />
+    <input
+      type="email"
+      class="input input-primary w-full"
+      placeholder="Email Address *"
+      name="email"
+      required
+    />
+    <textarea
+      class="textarea textarea-primary w-full"
+      placeholder="Your Message *"
+      name="message"
+      required
+    ></textarea>
+    <button class="btn btn-primary" type="submit">Send Message</button>
+    <div id="result"></div>
+  </form>
+</div>
+
+<script is:inline>
+const form = document.getElementById('form');
+const result = document.getElementById('result');
+
+form.addEventListener('submit', function(e) {
+    const formData = new FormData(form);
+    e.preventDefault();
+
+    const object = Object.fromEntries(formData);
+    const json = JSON.stringify(object);
+
+    result.innerHTML = "Please wait..."
+
+    fetch('https://api.web3forms.com/submit', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Accept': 'application/json'
+            },
+            body: json
+        })
+        .then(async (response) => {
+            let json = await response.json();
+            if (response.status == 200) {
+                result.innerHTML = json.message;
+            } else {
+                console.log(response);
+                result.innerHTML = json.message;
+            }
+        })
+        .catch(error => {
+            console.log(error);
+            result.innerHTML = "Something went wrong!";
+        })
+        .then(function() {
+            form.reset();
+            setTimeout(() => {
+                result.style.display = "none";
+            }, 3000);
+        });
+});
+</script>

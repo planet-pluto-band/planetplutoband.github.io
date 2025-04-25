@@ -1,0 +1,16 @@
+@import "tailwindcss";
+@plugin "daisyui" {
+  themes: night --default;
+}
+
+h1 {
+  @apply text-3xl font-bold text-primary pt-16 mb-4;
+}
+
+h2 {
+  @apply text-2xl font-bold text-primary pt-14 mb-4;
+}
+
+.link {
+  @apply text-accent hover:text-primary;
+}
