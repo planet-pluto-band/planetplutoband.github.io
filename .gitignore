@@ -22,3 +22,9 @@ pnpm-debug.log*
 
 # jetbrains setting folder
 .idea/
+.vscode/
+
+# playwright
+playwright-report/
+test-results/
+playwright/
