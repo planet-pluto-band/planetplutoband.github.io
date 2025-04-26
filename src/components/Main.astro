@@ -3,7 +3,7 @@
 import ContactForm from "../components/ContactForm.astro";
 ---
 
-<div id="container" class="container mx-auto flex justify-center text-center items-center mt-5">
+<div id="container" class="w-full max-w-4xl mx-auto px-4 text-center mt-5">
   <main>
     <h1 id="home">
       Planet Pluto
@@ -14,39 +14,39 @@ import ContactForm from "../components/ContactForm.astro";
     <p>
       Planet Pluto is a cover band from Greensboro, NC playing songs from the 80s, 90, and 00s.
     </p>
-  <div>
-    <h2 class="flex justify-center mt-4" id="videos">Videos</h2>
-    <div class="flex justify-center mt-4">
-      <iframe
-        width="560"
-        height="315"
-        src="https://www.youtube.com/embed/uH69ojuAkUQ?si=z3zM2okwQ8Hbz6ti"
-        title="Sympathy For The Devil"
-        frameborder="0"
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-        referrerpolicy="strict-origin-when-cross-origin"
-        allowfullscreen>
-      </iframe>
+    <div class="mx-auto">
+      <h2 class="flex justify-center mt-4" id="videos">Videos</h2>
+      <div class="flex justify-center mt-4">
+        <iframe
+          width="560"
+          height="315"
+          src="https://www.youtube.com/embed/uH69ojuAkUQ?si=z3zM2okwQ8Hbz6ti"
+          title="Sympathy For The Devil"
+          frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          referrerpolicy="strict-origin-when-cross-origin"
+          allowfullscreen>
+        </iframe>
+      </div>
+      <div class="flex justify-center mt-4">
+        <iframe
+          width="560"
+          height="315"
+          src="https://www.youtube.com/embed/mALoTNzFdbU?si=qjt9TzWnyX90AcuJ"
+          title="Mary Jane's Last Dance"
+          frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          referrerpolicy="strict-origin-when-cross-origin"
+          allowfullscreen>
+        </iframe>
+      </div>
     </div>
-    <div class="flex justify-center mt-4">
-      <iframe
-        width="560"
-        height="315"
-        src="https://www.youtube.com/embed/mALoTNzFdbU?si=qjt9TzWnyX90AcuJ"
-        title="Mary Jane's Last Dance"
-        frameborder="0"
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-        referrerpolicy="strict-origin-when-cross-origin"
-        allowfullscreen>
-      </iframe>
+    <div class="flex justify-center">
+      <h2 id="contact">Contact/Booking</h2>
     </div>
-  </div>
-  <div class="flex justify-center">
-    <h2 id="contact">Contact/Booking</h2>
-  </div>
-  <div>
-    <ContactForm />
-  </div>
-  <!-- <Shows /> -->
+    <div>
+      <ContactForm />
+    </div>
+    <!-- <Shows /> -->
   </main>
 </div>
