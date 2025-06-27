@@ -1,6 +1,7 @@
 ---
 import ContactForm from "../components/ContactForm.astro";
 import Shows from "../components/Shows.astro";
+import Tips from "../components/Tips.astro";
 ---
 
 <div id="container" class="w-full max-w-4xl mx-auto px-4 text-center mt-5">
@@ -14,11 +15,8 @@ import Shows from "../components/Shows.astro";
     <p>
       Planet Pluto is a cover band from Greensboro, NC playing songs from the 80s, 90s, and 00s.
     </p>
-    <div class="mt-8 flex justify-center">
-      <a href="https://account.venmo.com/u/paul41" class="flex items-center space-x-2 link">
-        <span>Click to tip</span>
-        <img src="img/venmo_logo_blue.png" class="h-8" />
-      </a>
+    <div class="mt-8">
+      <Tips />
     </div>
     <div class="mx-auto">
       <h2 class="flex justify-center mt-4" id="videos">Videos</h2>
