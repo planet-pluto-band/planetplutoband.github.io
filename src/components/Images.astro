@@ -1,0 +1,100 @@
+---
+const images = [
+  { src: "/img/jb_1.jpeg", caption: "Jack Brown's Beer and Burger Joint - Kill Devil Hills" },
+  { src: "/img/jb_2.jpeg", caption: "Jack Brown's Beer and Burger Joint - Kill Devil Hills" },
+  { src: "/img/jb_3.jpeg", caption: "Jack Brown's Beer and Burger Joint - Kill Devil Hills" },
+  { src: "/img/jb_4.jpg", caption: "Jack Brown's Beer and Burger Joint - Kill Devil Hills" },
+  { src: "/img/jb_5.jpg", caption: "Jack Brown's Beer and Burger Joint - Kill Devil Hills" },
+  { src: "/img/jb_6.jpg", caption: "Jack Brown's Beer and Burger Joint - Kill Devil Hills" },
+  { src: "/img/flat_iron_1.jpeg", caption: "Flat Iron" },
+  { src: "/img/planet_pluto.jpeg", caption: "The Kraken" },
+];
+---
+
+<div>
+  <h2 id="images" class="text-2xl font-bold mb-4">Images</h2>
+  <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 p-4">
+    {images.map(({ src, caption }, i) => (
+      <button
+        type="button"
+        class="rounded-xl overflow-hidden shadow-md transition hover:scale-105 image-button"
+        data-src={src}
+        data-caption={caption}
+        data-index={i}
+      >
+        <img
+          src={src}
+          alt={caption}
+          class="object-cover w-full aspect-video"
+          loading="lazy"
+        />
+      </button>
+    ))}
+  </div>
+  <div class="modal pointer-events-auto" id="img-modal">
+    <div class="modal-box max-w-4xl w-full relative">
+      <img id="modal-img" class="w-full h-auto rounded-lg mb-4" />
+      <p id="modal-caption" class="text-center text-lg font-medium text-gray-600 mb-4"></p>
+      <button id="prev-btn" class="btn btn-sm bg-secondary">←</button>
+      <button id="next-btn" class="btn btn-sm bg-secondary">→</button>
+      <div class="modal-action">
+        <button id="close-btn" class="btn">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const buttons = document.querySelectorAll(".image-button");
+    const modal = document.getElementById("img-modal");
+    const modalImg = document.getElementById("modal-img");
+    const modalCaption = document.getElementById("modal-caption");
+    const closeBtn = document.getElementById("close-btn");
+    const prevBtn = document.getElementById("prev-btn");
+    const nextBtn = document.getElementById("next-btn");
+
+    let currentIndex = 0;
+    const images = Array.from(buttons).map(btn => ({
+      src: btn.dataset.src,
+      caption: btn.dataset.caption,
+    }));
+
+    function showImage(index) {
+      currentIndex = index;
+      const image = images[currentIndex];
+      modalImg.src = image.src;
+      modalCaption.textContent = image.caption;
+    }
+
+    function openModal(index) {
+      showImage(index);
+      modal.classList.add("modal-open");
+    }
+
+    function closeModal() {
+      modal.classList.remove("modal-open");
+    }
+
+    buttons.forEach((btn, i) => {
+      btn.addEventListener("click", () => {
+        const index = Number(btn.dataset.index);
+        openModal(i);
+      });
+    });
+
+    closeBtn.addEventListener("click", closeModal);
+
+    prevBtn.addEventListener("click", (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      showImage((currentIndex - 1 + images.length) % images.length);
+    });
+
+    nextBtn.addEventListener("click", (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      showImage((currentIndex + 1) % images.length);
+    });
+  });
+</script>
