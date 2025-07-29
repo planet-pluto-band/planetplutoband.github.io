@@ -14,7 +14,7 @@
     "@tailwindcss/vite": "^4.1.11",
     "@typescript-eslint/eslint-plugin": "^8.37.0",
     "@typescript-eslint/parser": "^8.36.0",
-    "astro": "^5.11.1",
+    "astro": "^5.12.5",
     "daisyui": "^5.0.46",
     "dotenv": "^17.2.0",
     "eslint": "^9.31.0",
