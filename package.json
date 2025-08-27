@@ -11,7 +11,7 @@
   },
   "devDependencies": {
     "@playwright/test": "^1.53.2",
-    "@tailwindcss/vite": "^4.1.11",
+    "@tailwindcss/vite": "^4.1.12",
     "@typescript-eslint/eslint-plugin": "^8.39.1",
     "@typescript-eslint/parser": "^8.39.0",
     "astro": "^5.13.3",
