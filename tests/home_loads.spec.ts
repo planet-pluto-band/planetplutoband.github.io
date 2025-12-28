@@ -1,19 +1,4 @@
-import { type Page, expect, test } from "@playwright/test";
-
-interface OptionsType {
-  exact?: boolean;
-}
-
-const verifyInput = async (
-  page: Page,
-  placeholder: string,
-  options?: OptionsType,
-) => {
-  const input = page.getByPlaceholder(placeholder, options);
-  await expect(input).toBeVisible();
-  await expect(input).toHaveText("");
-  await expect(input).toBeEditable();
-};
+import { expect, test } from "@playwright/test";
 
 test("navbar is visible", async ({ page }) => {
   await page.goto("/");
@@ -42,13 +27,5 @@ test("Contact is visible", async ({ page }) => {
 test("Contact form is visible", async ({ page }) => {
   await page.goto("/");
 
-  await expect(page.locator("form")).toBeVisible();
-});
-
-test("Contact inputs are visible, empty and editable", async ({ page }) => {
-  await page.goto("/");
-
-  await verifyInput(page, "Name *", { exact: true });
-  await verifyInput(page, "Email Address *", { exact: true });
-  await verifyInput(page, "Your Message *", { exact: true });
+  await expect(page.getByText("planetplutobandgso@gmail.com")).toBeVisible();
 });
